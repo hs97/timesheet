@@ -53,7 +53,7 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: 460px;
+    width: 90%;
   }
   .dd-wrapper {
     -webkit-user-select: none;

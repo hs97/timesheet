@@ -1,11 +1,24 @@
 import React from 'react';
-//import logo from './logo.svg';
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
+import moment from 'moment';
 import './App.css';
 import Dropdown from './Components/Dropdown'
 const SHEET_ID = '1hYCZ4SXgisshcS5e-JU3NX4D9v4LOROUIb3PqUBwyiY';
 const ACCESS_TOKEN = 'ya29.Il-7B7DC4QIYx0Rexh7sTk8CW9KdqH5FLanzbNZLbwN5Gorb1O71lmTEsLMqmqB2FsmzocyW-Xou1H6S8BB2vkaRnM9mtvZdoOVqaud-Jao71FVTmnOkhd0gSrnL0q7AmQ';
 
+const format = 'h:mm a';
+
+const now = moment()
+  .hour(0)
+  .minute(0);
+
+function onChange(value) {
+  console.log(value && value.format(format));
+} 
+
 class App extends React.Component {
+
   constructor(){
     super()
     this.state = {
@@ -94,6 +107,10 @@ class App extends React.Component {
     })
   }
 
+// For timepicker initialization
+
+
+  // For writing into Google Sheetsn
   updateSheetValues = () => {
     fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`, {
       method: "POST",
@@ -125,6 +142,9 @@ class App extends React.Component {
       })
     })
   }
+
+
+
   render() {
     return ( 
 
@@ -145,6 +165,28 @@ class App extends React.Component {
             title="Select Task"
             list={this.state.Task}
             resetThenSet={this.resetThenSet}
+        />
+
+        <TimePicker
+            showSecond={false}
+            defaultValue={now}
+            className="xxx"
+            onChange={onChange}
+            format={format}
+            allowEmpty={false}
+            use12Hours
+            inputReadOnly
+        />
+
+        <TimePicker
+            showSecond={false}
+            defaultValue={now}
+            className="xxx"
+            onChange={onChange}
+            format={format}
+            allowEmpty={false}
+            use12Hours
+            inputReadOnly
         />
       </div>
       </div>
