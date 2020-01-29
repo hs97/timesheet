@@ -6,8 +6,12 @@ import './App.css';
 import Dropdown from './Components/Dropdown'
 
 const SHEET_ID = '1hYCZ4SXgisshcS5e-JU3NX4D9v4LOROUIb3PqUBwyiY';
-const ACCESS_TOKEN = 'ya29.Il-7B7DC4QIYx0Rexh7sTk8CW9KdqH5FLanzbNZLbwN5Gorb1O71lmTEsLMqmqB2FsmzocyW-Xou1H6S8BB2vkaRnM9mtvZdoOVqaud-Jao71FVTmnOkhd0gSrnL0q7AmQ';
 
+// Haoyu's Access Token
+//const ACCESS_TOKEN = 'ya29.Il-7B7DC4QIYx0Rexh7sTk8CW9KdqH5FLanzbNZLbwN5Gorb1O71lmTEsLMqmqB2FsmzocyW-Xou1H6S8BB2vkaRnM9mtvZdoOVqaud-Jao71FVTmnOkhd0gSrnL0q7AmQ';
+
+// Liam's Access Token
+const ACCESS_TOKEN = 'ya29.Il-7B41QJxnktpyR9SGt_Mp5cK67u_ino9l8XW2qZgsvMT_AkexjhmOqkf35wMwJVTXKUo-IZhWrCBSln_ZkMhr9pK0zreAnnTlN_cwTZzAeZin12VRezLVD1iSviwurDQ'
 const format = 'h:mm a';
 
 const now = moment()
@@ -113,6 +117,7 @@ class App extends React.Component {
 
   // For writing into Google Sheetsn
   updateSheetValues = () => {
+    
     fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}:batchUpdate`, {
       method: "POST",
       headers: {
@@ -133,7 +138,7 @@ class App extends React.Component {
             },
             cell: {
               userEnteredValue: {
-                 "stringValue":'hello world'
+                 "stringValue":'Bangers'
               },
             },
             fields: "*"
@@ -142,6 +147,7 @@ class App extends React.Component {
 
       })
     })
+    console.log("Sent")
   }
 
 
@@ -169,6 +175,7 @@ class App extends React.Component {
             resetThenSet={this.resetThenSet}
         />
 
+        
         <TimePicker
             showSecond={false}
             defaultValue={now}
@@ -177,9 +184,10 @@ class App extends React.Component {
             format={format}
             allowEmpty={false}
             use12Hours
+            placeholder="Start Time"
             inputReadOnly
         />
-
+        
         <TimePicker
             showSecond={false}
             defaultValue={now}
