@@ -172,12 +172,7 @@ class App extends React.Component {
     return ( 
 
       <div className = "App">
-        
-        hello world 
-
       
-        <button onClick={this.updateSheetValues}>Submit</button>
-
         <div className = "wrapper">
             <Dropdown
               title="Select HouseId"
@@ -226,7 +221,11 @@ class App extends React.Component {
                 </Button>
           </div>
 
+        <button onClick={this.updateSheetValues}>Submit</button>
+
         </div>
+
+        
 
 
       
