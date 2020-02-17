@@ -4,6 +4,9 @@ import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import './App.css';
 import Dropdown from './Components/Dropdown'
+import Button from 'react-bootstrap/Button'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const SHEET_ID = '1hYCZ4SXgisshcS5e-JU3NX4D9v4LOROUIb3PqUBwyiY';
 
@@ -27,6 +30,8 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
+      //Tasklist: [],
+
       HouseId: [
         {
           id: 0,
@@ -115,6 +120,9 @@ class App extends React.Component {
 // For timepicker initialization
 
 
+// Add to list serve
+
+
   // For writing into Google Sheetsn
   updateSheetValues = () => {
     
@@ -150,9 +158,17 @@ class App extends React.Component {
     console.log("Sent")
   }
 
+  AddTask(){
+
+  };
+
+
+
 
 
   render() {
+
+
     return ( 
 
       <div className = "App">
@@ -163,50 +179,57 @@ class App extends React.Component {
         <button onClick={this.updateSheetValues}>Submit</button>
 
         <div className = "wrapper">
-        <Dropdown
-            title="Select HouseId"
-            list={this.state.HouseId}
-            resetThenSet={this.resetThenSet}
-        />
+            <Dropdown
+              title="Select HouseId"
+              list={this.state.HouseId}
+              resetThenSet={this.resetThenSet}
+            />
 
-        <Dropdown
-            title="Select Task"
-            list={this.state.Task}
-            resetThenSet={this.resetThenSet}
-        />
+            <Dropdown
+                title="Select Task"
+                list={this.state.Task}
+                resetThenSet={this.resetThenSet}
+            />
 
         
-        <TimePicker
-            showSecond={false}
-            defaultValue={now}
-            className="xxx"
-            onChange={onChange}
-            format={format}
-            allowEmpty={false}
-            use12Hours
-            placeholder="Start Time"
-            inputReadOnly
-        />
+                    <TimePicker
+                        showSecond={false}
+                        defaultValue={now}
+                        className="xxx"
+                        onChange={onChange}
+                        format={format}
+                        allowEmpty={false}
+                        use12Hours
+                        placeholder="Start Time"
+                        inputReadOnly
+                    />
         
-        <TimePicker
-            showSecond={false}
-            defaultValue={now}
-            className="xxx"
-            onChange={onChange}
-            format={format}
-            allowEmpty={false}
-            use12Hours
-            inputReadOnly
-        />
-      </div>
-      <div className="ButtonRow">
-        <button onClick={console.log("Add to list")}>Add Task</button>
-      </div>
-      <div className="ListRow">
+                    <TimePicker
+                        showSecond={false}
+                        defaultValue={now}
+                        className="xxx"
+                        onChange={onChange}
+                        format={format}
+                        allowEmpty={false}
+                        use12Hours
+                        inputReadOnly
+                    />
+          </div>
+          <div className="button-row">
+                <Button 
+                    variant="primary" 
+                    size="lg" 
+                    block
+                    onClick={() => { console.log("Add to the fucking list") }}
+                >
+                      Add Task    
+                </Button>
+          </div>
 
-      </div>
+        </div>
 
-      </div>
+
+      
     );
 
   }
